@@ -1,4 +1,4 @@
-package com.example.demo.kbservice.domain.entity;
+package com.example.demo.collaboration.domain.entity;
 
 import java.time.LocalDateTime;
 
@@ -9,33 +9,28 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 
 @Entity
-public class KB {
+public class Post {
 	
 	@Id
 	@GeneratedValue
 	Long id;
-	@Column
-	String name;
-	@Column
-	String Category;
 	@Lob
 	@Column(length=1024)
-	String Description;
-	@Column
+	String Content;
 	LocalDateTime CreatedAt;
 	@Column
 	String CreatedBy;
 	@Column
-	Long Parent;
+	String Parent;
+//	@Column
+//	Long[] likes;
 	
-	public KB() {
+	public Post() {
 		
 	}
 	
-	public KB (String name, String category, String description, String createdBy, Long parent) {	
-		this.name=name;
-		this.Category = category;
-		this.Description = description;
+	public Post (String content, String createdBy, String parent) {	
+		this.Content=content;
 		this.CreatedAt = LocalDateTime.now();
 		this.CreatedBy = createdBy;
 		this.Parent = parent;
@@ -45,10 +40,8 @@ public class KB {
 	@Override
 	public String toString() {
 		return new StringBuilder("{ Id : ").append(id)
-				.append(", name : ").append(name)
-				.append(", Category : ").append(Category)
-				.append(", Description : ").append(Description)
-				.append(", CreatedAt : ").append(CreatedAt)
+				.append(", content : ").append(Content)
+				.append(", createdAt : ").append(CreatedAt)
 				.append(", CreatedBy : ").append(CreatedBy)
 				.append(", Parent : ").append(Parent)
 				.append(" }")
@@ -63,28 +56,12 @@ public class KB {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getContent() {
+		return Content;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getCategory() {
-		return Category;
-	}
-
-	public void setCategory(String category) {
-		Category = category;
-	}
-
-	public String getDescription() {
-		return Description;
-	}
-
-	public void setDescription(String description) {
-		Description = description;
+	public void setContent(String content) {
+		Content = content;
 	}
 
 	public LocalDateTime getCreatedAt() {
@@ -103,13 +80,12 @@ public class KB {
 		CreatedBy = createdBy;
 	}
 
-	public Long getParent() {
+	public String getParent() {
 		return Parent;
 	}
 
-	public void setParent(Long parent) {
+	public void setParent(String parent) {
 		Parent = parent;
 	}
-	
-	
+		
 }

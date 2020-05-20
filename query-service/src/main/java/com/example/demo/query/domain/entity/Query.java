@@ -13,6 +13,7 @@ public class Query {
 	@Id
 	@GeneratedValue
 	Long id;
+	@Column
 	String name;
 	@Column
 	String Category;
