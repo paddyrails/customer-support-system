@@ -22,9 +22,9 @@ public class KbServiceApplication implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		KB kb = new KB("hoa duties", "HOA", "Long list of duties", "21415315", null);
- 		kbRepository.save(kb);
- 		System.out.println("item created");
+//		KB kb = new KB("upgrades", "Sales", "Long list of upgrades", "21415315", null);
+// 		kbRepository.save(kb);
+// 		System.out.println("item created");
  		Collection<KB> all = kbRepository.findAll();
  		all.forEach(q -> {
  			System.out.println(q.toString());

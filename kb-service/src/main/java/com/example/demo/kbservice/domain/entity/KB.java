@@ -32,6 +32,7 @@ public class KB {
 	}
 	
 	public KB (String name, String category, String description, String createdBy, Long parent) {	
+		this.name=name;
 		this.Category = category;
 		this.Description = description;
 		this.CreatedAt = LocalDateTime.now();

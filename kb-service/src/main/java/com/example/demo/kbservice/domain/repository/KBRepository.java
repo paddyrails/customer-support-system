@@ -17,6 +17,6 @@ public interface KBRepository extends JpaRepository<KB, Long>{
 	@org.springframework.data.jpa.repository.Query("SELECT k FROM KB k WHERE LOWER(k.Category) = LOWER(:category)")
     public List<KB> findByCategory(String category);
 	
-	@org.springframework.data.jpa.repository.Query("SELECT k FROM KB k WHERE LOWER(k.name) LIKE '%{LOWER(:name)}%")
+	@org.springframework.data.jpa.repository.Query("SELECT k FROM KB k WHERE LOWER(k.name) LIKE %:name%")
     public List<KB> containsName(String name);
 }

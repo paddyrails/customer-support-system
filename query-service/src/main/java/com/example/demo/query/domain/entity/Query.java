@@ -36,6 +36,7 @@ public class Query {
 	}
 	
 	public Query (String name, String category, String description, String custId) {	
+		this.name=name;
 		this.Category = category;
 		this.Description = description;
 		this.CustomerId = custId;

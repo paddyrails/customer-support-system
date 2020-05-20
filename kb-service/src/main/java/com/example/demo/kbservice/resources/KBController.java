@@ -32,21 +32,25 @@ public class KBController {
 	public KBController(KBService kbSvc) {
 		kbService = kbSvc;
 	}	
-	
+
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Collection<KB>> findByCategory(@RequestParam("category") String category){
+	public ResponseEntity<Collection<KB>> containsName(@RequestParam("name") String name){
 		logger.info(String.format("kb-service findByCategory invoked for {} for category '{}'", 
 				KBController.class,
-				category));
+				name));
 		List<KB> queries;
-		if(category != null) {
-			category = category.trim().toLowerCase();
+		if(name != null) {
+			name = name.trim().toLowerCase();
+		}
+		if(name != null) {
+			name = name.trim().toLowerCase();
 		}
 		try {
-			if(category != null && "".equals(category)) {
+			if(name != null && "".equals(name)) {
 				queries = kbService.getAll();
 			}else {
-				queries = kbService.findByCategory(category);
+				System.out.println("in contains name : " + name);
+				queries = kbService.containsName(name);
 			}			
 		}catch(Exception ex) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -54,6 +58,28 @@ public class KBController {
 		return queries != null ? new ResponseEntity<>(queries, HttpStatus.OK) :
 			new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
+	
+//	@RequestMapping(method = RequestMethod.GET)
+//	public ResponseEntity<Collection<KB>> findByCategory(@RequestParam("category") String category){
+//		logger.info(String.format("kb-service findByCategory invoked for {} for category '{}'", 
+//				KBController.class,
+//				category));
+//		List<KB> queries;
+//		if(category != null) {
+//			category = category.trim().toLowerCase();
+//		}
+//		try {
+//			if(category != null && "".equals(category)) {
+//				queries = kbService.getAll();
+//			}else {
+//				queries = kbService.findByCategory(category);
+//			}			
+//		}catch(Exception ex) {
+//			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//		}
+//		return queries != null ? new ResponseEntity<>(queries, HttpStatus.OK) :
+//			new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//	}
 	
 	@RequestMapping(value= "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Optional<KB>> findById(@PathVariable("id") String id){
