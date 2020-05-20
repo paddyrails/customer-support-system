@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 import com.example.demo.kbservice.domain.entity.KB;
 import com.example.demo.kbservice.domain.repository.KBRepository;
 
 @SpringBootApplication
+@EnableEurekaClient
 public class KbServiceApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {

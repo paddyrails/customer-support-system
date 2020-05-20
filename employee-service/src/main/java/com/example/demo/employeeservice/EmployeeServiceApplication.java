@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 import com.example.demo.employeeservice.domain.entity.Employee;
 import com.example.demo.employeeservice.domain.repository.EmployeeRepository;
 
 @SpringBootApplication
+@EnableEurekaClient
 public class EmployeeServiceApplication implements CommandLineRunner{
 
 	@Autowired
@@ -22,9 +24,9 @@ public class EmployeeServiceApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Employee emp = new Employee("Agnes", "Customer Support Associate", "Customer-Support");
-		employeeRepository.save(emp);
-		System.out.println("Item created");
+//		Employee emp = new Employee("Agnes", "Customer Support Associate", "Customer-Support");
+//		employeeRepository.save(emp);
+//		System.out.println("Item created");
 		Collection<Employee> employees = employeeRepository.findAll();
 		employees.forEach(emp1 -> {
 			System.out.println(emp1.toString());

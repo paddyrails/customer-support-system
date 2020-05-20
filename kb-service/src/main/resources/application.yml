@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: kb-service
+  freemarker:
+    enabled: false
+  thymeleaf:
+    cache: false
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/kb_service
+    username: springuser
+    password: password
+    
+error:
+  path=/error
+  
+ 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+      
+server:
+  port: 2222

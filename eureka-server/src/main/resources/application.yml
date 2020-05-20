@@ -1,0 +1,15 @@
+server:
+  port: ${vcap.application.port:8761}
+  
+eureka:
+  instance:
+    hostname: locahost
+  client:
+    register-with-eureka: false
+    fetch-registry:  false
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+    
+spring:
+  thymeleaf:
+    enabled: false

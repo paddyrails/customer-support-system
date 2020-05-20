@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: collaboration-service
+  freemarker:
+    enabled: false
+  thymeleaf:
+    cache: false
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/collaboration_service
+    username: springuser
+    password: password
+    
+error:
+  path=/error
+  
+ 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+      
+server:
+  port: 2225  
