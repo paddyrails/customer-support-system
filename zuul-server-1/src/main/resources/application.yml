@@ -1,0 +1,45 @@
+server:
+  port: 8765
+  compression:
+    enabled: true
+    
+spring:
+  application:
+    name: zuul-server
+
+eureka:
+  client:    
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+
+zuul:
+  host:
+    connect-timeout-millis: 5000000
+    socket-timeout-millis: 5000000
+  ignored-services: "*"
+  routes:
+    queryapi:
+      path: /queryapi/**
+      service-id: QUERY-SERVICE
+      strip-prefix: true  
+    kbapi:
+      path: /kbapi/**
+      service-id: KB-SERVICE
+      strip-prefix: true  
+    collaborationapi:
+      path: /collaborationapi/**
+      service-id: COLLABORATION-SERVICE
+      strip-prefix: true  
+    userapi:
+      path: /employeeapi/**
+      service-id: EMPLOYEE-SERVICE
+      strip-prefix: true  
+    customerapi:
+      path: /customerapi/**
+      service-id: CUSTOMER-SERVICE
+      strip-prefix: true  
+      
